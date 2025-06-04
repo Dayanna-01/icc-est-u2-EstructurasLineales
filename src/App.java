@@ -5,11 +5,12 @@ public class App {
         Stack stack = new Stack();
         stack.push(10);
         stack.push(-1);
-        stack.push(0);
         stack.push(5);
+        stack.push(8);
+        System.out.println("Tam = " + stack.size());
         stack.printStack(); 
         stack.pop();
-        stack.peek();
+        System.out.println("Tam = " + stack.size());
         stack.printStack(); 
     }
 }
