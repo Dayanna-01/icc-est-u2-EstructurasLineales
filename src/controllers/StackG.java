@@ -45,7 +45,7 @@ public class StackG<T> {
         System.out.println("Contenido de la pila:");
         NodeGeneric<T> current = top;
         while (current != null) {
-            System.out.print(current.getValue() + " ");
+            System.out.print(current.getValue() + ", ");
             current = current.getNext();
         }
         System.out.println();

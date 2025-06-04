@@ -62,7 +62,7 @@ public class Cola {
         System.out.print("Contenido de la cola: ");
         Node current = primero;
         while (current != null) {
-            System.out.print(current.getValor() + " ");
+            System.out.print(current.getValor() + ", ");
             current = current.getNext();
         }
         System.out.println();

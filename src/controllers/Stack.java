@@ -45,7 +45,7 @@ public class Stack {
         System.out.println("Contenido de la pila:");
         Node current = top;
         while (current != null) {
-            System.out.print(current.getValor() + " ");
+            System.out.print(current.getValor() + ", ");
             current = current.getNext();
         }
         System.out.println();

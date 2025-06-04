@@ -1,16 +1,20 @@
 import controllers.Cola;
+import controllers.ColaG;
+
 import controllers.Stack;
 import controllers.StackG;
 
+import models.Persona;
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("========= PILA NO GENÉRICA =========");
         Stack stack = new Stack();
         stack.push(10);
         stack.push(-1);
         stack.push(5);
         stack.push(8);
-        
+
+        System.out.println("\n========= PILA  =========");
         System.out.println("Elementos actuales en la pila:");
         stack.printStack(); 
         System.out.println("Tamaño de la pila: " + stack.size());
@@ -27,7 +31,6 @@ public class App {
         stackGInt.printStack(); 
         System.out.println("Tamaño de la pila genérica: " + stackGInt.size());
 
-        System.out.println("\n========= PILA GENÉRICA =========");
         StackG<String> stackGString = new StackG<>();
         stackGString.push("Uno");
         stackGString.push("Cuatro");
@@ -61,8 +64,5 @@ public class App {
         System.out.println("Atiende a la persona => " + colaPersona.remove());
         System.out.println("Tamaño de la cola: " + colaPersona.size());
         colaPersona.printQueue();
-
-
-        System.out.println("\n=========== FIN DEL PROGRAMA ===========");
     }
 }
