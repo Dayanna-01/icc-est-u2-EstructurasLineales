@@ -1,16 +1,68 @@
+import controllers.Cola;
 import controllers.Stack;
+import controllers.StackG;
 
 public class App {
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        System.out.println("========= PILA NO GENÉRICA =========");
         Stack stack = new Stack();
         stack.push(10);
         stack.push(-1);
         stack.push(5);
         stack.push(8);
-        System.out.println("Tam = " + stack.size());
+        
+        System.out.println("Elementos actuales en la pila:");
         stack.printStack(); 
+        System.out.println("Tamaño de la pila: " + stack.size());
         stack.pop();
-        System.out.println("Tam = " + stack.size());
+        System.out.println("Elementos después del pop:");
         stack.printStack(); 
+        System.out.println("Tamaño actualizado de la pila: " + stack.size());
+
+        System.out.println("\n========= PILA GENÉRICA =========");
+        StackG<Integer> stackGInt = new StackG<>();
+        stackGInt.push(1);
+        stackGInt.push(4);
+        System.out.println("Elementos en la pila genérica:");
+        stackGInt.printStack(); 
+        System.out.println("Tamaño de la pila genérica: " + stackGInt.size());
+
+        System.out.println("\n========= PILA GENÉRICA =========");
+        StackG<String> stackGString = new StackG<>();
+        stackGString.push("Uno");
+        stackGString.push("Cuatro");
+        System.out.println("Elementos en la pila genérica :");
+        stackGString.printStack(); 
+        System.out.println("Tamaño de la pila genérica : " + stackGString.size());
+
+        System.out.println("\n========= COLA =========");
+        Cola cola = new Cola();
+        cola.add(5);
+        cola.add(7);
+        cola.add(10);
+        System.out.println("Tamaño de la cola: " + cola.size);
+        cola.printCola();
+        cola.remove();
+        System.out.println("Después de remover un elemento:");
+        System.out.println("Tamaño de la cola: " + cola.size);
+        cola.printCola();
+
+        System.out.println("\n========= COLA GENÉRICA =========");
+        Persona p1 = new Persona("Pablo");
+        Persona p2 = new Persona("Juan");
+        Persona p3 = new Persona("Maria");
+
+        ColaG<Persona> colaPersona = new ColaG<>();
+        colaPersona.add(p1);
+        colaPersona.add(p2);
+        colaPersona.add(p3);
+        System.out.println("Tamaño de la cola: " + colaPersona.size());
+        colaPersona.printQueue();
+        System.out.println("Atiende a la persona => " + colaPersona.remove());
+        System.out.println("Tamaño de la cola: " + colaPersona.size());
+        colaPersona.printQueue();
+
+
+        System.out.println("\n=========== FIN DEL PROGRAMA ===========");
     }
 }
