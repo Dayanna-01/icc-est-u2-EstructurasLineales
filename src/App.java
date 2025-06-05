@@ -1,8 +1,12 @@
+import Ejercicio_01_sign.SignValidator;
+import Ejercicio_02_sorting.StackSorter;
 import controllers.Cola;
 import controllers.ColaG;
 import controllers.Stack;
 import controllers.StackG;
+import controllers.StackSorterG;
 import models.Persona;
+
 
 public class App {
     public static void main(String[] args) {
@@ -73,5 +77,25 @@ public class App {
         } else {
             System.out.println("No se encontró a la persona con ese nombre.");
         }
+
+        System.out.println("\n========= EJERCICIO UNO =========");
+        SignValidator validator = new SignValidator();
+        System.out.println("La cadena --> ([]){} es: " + validator.isValid("([]){}"));
+        System.out.println("La cadena --> ([]){} es: " + validator.isValid("({)}"));
+
+        System.out.println("\n========= EJERCICIO DOS =========");
+        StackG<Integer> stack = new StackG<>();
+        stack.push(5);
+        stack.push(1); 
+        stack.push(4);
+        stack.push(2);
+
+        StackG sorter = new StackG();
+        sorter.sortStack(stack);
+
+        while (!stack.isEmpty()) {
+            System.out.println(stack.pop());
+        }
+
     }
 }

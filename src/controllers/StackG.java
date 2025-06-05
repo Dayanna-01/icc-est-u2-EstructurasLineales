@@ -20,7 +20,9 @@ public class StackG<T> {
     }
 
     public T pop() {
-        if (isEmpty()) throw new EmptyStackException();
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
         T valor = top.getValue();
         top = top.getNext();
         size--;
@@ -28,7 +30,9 @@ public class StackG<T> {
     }
 
     public T peek() {
-        if (isEmpty()) throw new EmptyStackException();
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
         return top.getValue();
     }
 
@@ -42,7 +46,7 @@ public class StackG<T> {
             System.out.println();
             return;
         }
-        System.out.println("Contenido de la pila:");
+        System.out.print("Contenido de la pila (de tope a base): ");
         NodeGeneric<T> current = top;
         while (current != null) {
             System.out.print(current.getValue() + " ");
