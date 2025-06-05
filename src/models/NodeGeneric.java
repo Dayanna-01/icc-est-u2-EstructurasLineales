@@ -1,20 +1,16 @@
 package models;
 
-public class NodeGeneric <T> {
+public class NodeGeneric<T> {
     private T value;
     private NodeGeneric<T> next;
 
-    public NodeGeneric(T value){
+    public NodeGeneric(T value) {
         this.value = value;
         this.next = null;
     }
 
     public T getValue() {
         return value;
-    }
-
-    public void setValue(T value) {
-        this.value = value;
     }
 
     public NodeGeneric<T> getNext() {
@@ -30,6 +26,4 @@ public class NodeGeneric <T> {
         return "NodeGeneric [value=" + value + ", next=" + next + "]";
     }
     
-    
-
 }

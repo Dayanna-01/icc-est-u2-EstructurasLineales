@@ -40,22 +40,21 @@ public class StackG<T> {
         return top == null;
     }
 
+    public int size() {
+        return size;
+    }
+
     public void printStack() {
         if (isEmpty()) {
             System.out.println("La pila está vacía.");
-            System.out.println();
             return;
         }
-        System.out.print("Contenido de la pila (de tope a base): ");
+        System.out.print("Contenido de la pila: ");
         NodeGeneric<T> current = top;
         while (current != null) {
             System.out.print(current.getValue() + " ");
             current = current.getNext();
         }
         System.out.println();
-    }
-
-    public int size() {
-        return size;
     }
 }

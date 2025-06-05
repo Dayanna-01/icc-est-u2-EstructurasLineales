@@ -4,12 +4,12 @@ import controllers.Cola;
 import controllers.ColaG;
 import controllers.Stack;
 import controllers.StackG;
-import controllers.StackSorterG;
 import models.Persona;
-
 
 public class App {
     public static void main(String[] args) {
+
+        // Pila no genérica
         Stack stack = new Stack();
         stack.push(10);
         stack.push(-1);
@@ -25,6 +25,7 @@ public class App {
         stack.printStack(); 
         System.out.println("Tamaño actualizado de la pila: " + stack.size());
 
+        // Pila genérica con Integer
         System.out.println("\n========= PILA GENÉRICA =========");
         StackG<Integer> stackGInt = new StackG<>();
         stackGInt.push(1);
@@ -33,6 +34,7 @@ public class App {
         stackGInt.printStack(); 
         System.out.println("Tamaño de la pila genérica: " + stackGInt.size());
 
+        // Pila genérica con String
         StackG<String> stackGString = new StackG<>();
         stackGString.push("Uno");
         stackGString.push("Cuatro");
@@ -40,18 +42,20 @@ public class App {
         stackGString.printStack(); 
         System.out.println("Tamaño de la pila genérica : " + stackGString.size());
 
+        // Cola no genérica
         System.out.println("\n========= COLA =========");
         Cola cola = new Cola();
         cola.add(5);
         cola.add(7);
         cola.add(10);
-        System.out.println("Tamaño de la cola: " + cola.size);
+        System.out.println("Tamaño de la cola: " + cola.size); // O cola.size() si es método
         cola.printCola();
         cola.remove();
         System.out.println("Después de remover un elemento:");
-        System.out.println("Tamaño de la cola: " + cola.size);
+        System.out.println("Tamaño de la cola: " + cola.size); // O cola.size()
         cola.printCola();
 
+        // Cola genérica con objetos Persona
         System.out.println("\n========= COLA GENÉRICA =========");
         Persona p1 = new Persona("Pablo");
         Persona p2 = new Persona("Juan");
@@ -67,6 +71,7 @@ public class App {
         System.out.println("Tamaño de la cola: " + colaPersona.size());
         colaPersona.printColag();
 
+        // Buscar y eliminar por nombre en ColaG
         System.out.println("\n========= ENCONTRAR NOMBRE =========");
         System.out.println("La persona a buscar es David");
         colaPersona.findByName("David");
@@ -78,24 +83,29 @@ public class App {
             System.out.println("No se encontró a la persona con ese nombre.");
         }
 
+        // Validación de signos (Ejercicio 1)
         System.out.println("\n========= EJERCICIO UNO =========");
         SignValidator validator = new SignValidator();
         System.out.println("La cadena --> ([]){} es: " + validator.isValid("([]){}"));
-        System.out.println("La cadena --> ([]){} es: " + validator.isValid("({)}"));
+        System.out.println("La cadena --> ({)} es: " + validator.isValid("({)}"));
 
+        // Ordenar pila genérica (Ejercicio 2)
         System.out.println("\n========= EJERCICIO DOS =========");
-        StackG<Integer> stack = new StackG<>();
-        stack.push(5);
-        stack.push(1); 
-        stack.push(4);
-        stack.push(2);
+        StackG<Integer> aux = new StackG<>();
 
-        StackG sorter = new StackG();
-        sorter.sortStack(stack);
+    while (!stack.isEmpty()) {
+        int temp = stack.pop();
 
-        while (!stack.isEmpty()) {
-            System.out.println(stack.pop());
+        // Mueve los elementos más grandes de aux a stack
+        while (!aux.isEmpty() && aux.peek() > temp) {
+            stack.push(aux.pop());
         }
+        aux.push(temp);
+    }
 
+    // Devuelve los elementos ordenados a la pila original
+    while (!aux.isEmpty()) {
+        stack.push(aux.pop());
+    }
     }
 }
