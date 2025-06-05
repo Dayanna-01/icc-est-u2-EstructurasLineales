@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.EmptyStackException;
 import models.NodeGeneric;
+import models.Persona;
 
 public class ColaG<T> {
     private NodeGeneric<T> primero;
@@ -54,7 +55,7 @@ public class ColaG<T> {
         return count;
     }
 
-    public void printQueue() {
+    public void printColag() {
         if (isEmpty()) {
             System.out.println("La cola está vacía.");
             return;
@@ -67,4 +68,47 @@ public class ColaG<T> {
         }
         System.out.println();
     }
+
+    public T findByName(String nombre) {
+    NodeGeneric<T> aux = primero;
+    while (aux != null) {
+        if (aux.getValue() instanceof Persona) {
+            Persona p = (Persona) aux.getValue();
+            if (p.getNombre().equalsIgnoreCase(nombre)) {
+                return aux.getValue();
+            }
+        }
+        aux = aux.getNext();
+    }
+    return null;
+}
+
+public T removeByName(String nombre) {
+    if (isEmpty()) return null;
+
+    // Si el primero coincide
+    if (primero.getValue() instanceof Persona && ((Persona) primero.getValue()).getNombre().equalsIgnoreCase(nombre)) {
+        T valor = primero.getValue();
+        primero = primero.getNext();
+        if (primero == null) ultimo = null;
+        return valor;
+    }
+
+    NodeGeneric<T> current = primero;
+    while (current.getNext() != null) {
+        if (current.getNext().getValue() instanceof Persona) {
+            Persona p = (Persona) current.getNext().getValue();
+            if (p.getNombre().equalsIgnoreCase(nombre)) {
+                T valor = current.getNext().getValue();
+                current.setNext(current.getNext().getNext());
+                if (current.getNext() == null) ultimo = current;
+                return valor;
+            }
+        }
+        current = current.getNext();
+    }
+
+    return null;
+}
+
 }

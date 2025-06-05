@@ -1,9 +1,7 @@
 import controllers.Cola;
 import controllers.ColaG;
-
 import controllers.Stack;
 import controllers.StackG;
-
 import models.Persona;
 
 public class App {
@@ -60,9 +58,20 @@ public class App {
         colaPersona.add(p2);
         colaPersona.add(p3);
         System.out.println("Tamaño de la cola: " + colaPersona.size());
-        colaPersona.printQueue();
+        colaPersona.printColag();
         System.out.println("Atiende a la persona => " + colaPersona.remove());
         System.out.println("Tamaño de la cola: " + colaPersona.size());
-        colaPersona.printQueue();
+        colaPersona.printColag();
+
+        System.out.println("\n========= ENCONTRAR NOMBRE =========");
+        System.out.println("La persona a buscar es David");
+        colaPersona.findByName("David");
+
+        Persona personaEliminada = colaPersona.removeByName("David");
+        if (personaEliminada != null) {
+            System.out.println("Persona eliminada: " + personaEliminada.getNombre());
+        } else {
+            System.out.println("No se encontró a la persona con ese nombre.");
+        }
     }
 }
