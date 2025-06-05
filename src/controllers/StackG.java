@@ -5,7 +5,7 @@ import models.NodeGeneric;
 
 public class StackG<T> {
     private NodeGeneric<T> top;
-    private int size;
+    private int size;                                                       
 
     public StackG() {
         this.top = null;
@@ -49,7 +49,7 @@ public class StackG<T> {
             System.out.println("La pila está vacía.");
             return;
         }
-        System.out.print("Contenido de la pila: ");
+        System.out.print("Contenido de la pila original: ");
         NodeGeneric<T> current = top;
         while (current != null) {
             System.out.print(current.getValue() + " ");

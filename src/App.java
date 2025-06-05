@@ -91,21 +91,26 @@ public class App {
 
         // Ordenar pila genérica (Ejercicio 2)
         System.out.println("\n========= EJERCICIO DOS =========");
+        StackG<Integer> stackToSort = new StackG<>();
+        stackToSort.push(2);
+        stackToSort.push(4);
+        stackToSort.push(1);
+        stackToSort.push(5);
+
+        stackToSort.printStack();
+
         StackG<Integer> aux = new StackG<>();
 
-    while (!stack.isEmpty()) {
-        int temp = stack.pop();
-
-        // Mueve los elementos más grandes de aux a stack
-        while (!aux.isEmpty() && aux.peek() > temp) {
-            stack.push(aux.pop());
+        while (!stackToSort.isEmpty()) {
+            int temp = stackToSort.pop();
+            while (!aux.isEmpty() && aux.peek() > temp) {
+                stackToSort.push(aux.pop());
+            }
+            aux.push(temp);
         }
-        aux.push(temp);
-    }
-
-    // Devuelve los elementos ordenados a la pila original
-    while (!aux.isEmpty()) {
-        stack.push(aux.pop());
-    }
+        while (!aux.isEmpty()) {
+            stackToSort.push(aux.pop());
+        }
+        stackToSort.printStack();
     }
 }
